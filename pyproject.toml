@@ -1,0 +1,32 @@
+[project]
+name = "litestar-deck-examples"
+version = "0.0.0"
+description = "Executably-verified Litestar snippets rendered into the EuroPython 2026 deck (sources under examples/)."
+requires-python = ">=3.12"
+dependencies = ["litestar"]
+
+[dependency-groups]
+dev = ["pytest>=8", "httpx>=0.27", "ruff>=0.6", "pyright>=1.1"]
+
+# Not an installable package — examples/src is exposed to tests via pytest pythonpath.
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+pythonpath = ["examples/src"]
+testpaths = ["examples/tests"]
+addopts = "-q"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["examples/src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pyright]
+include = ["examples/src", "examples/tests"]
+extraPaths = ["examples/src"]
+pythonVersion = "3.12"
+typeCheckingMode = "basic"

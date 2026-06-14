@@ -1,0 +1,25 @@
+{
+  "name": "europython26-litestar",
+  "private": true,
+  "description": "Designing Performant APIs with Litestar — EuroPython 2026 (Slidev)",
+  "type": "module",
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export",
+    "export-pdf": "slidev export --format pdf --output dist/slides.pdf",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.16.0",
+    "@slidev/theme-default": "^0.25.0",
+    "vue": "^3.5.38"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.54.0",
+    "oxlint": "^1.69.0"
+  }
+}

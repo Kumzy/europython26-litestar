@@ -1,0 +1,276 @@
+/* ============================================================
+   Litestar "Stellar Drift" theme for Slidev
+   deep-space indigo · gold/amber star · cosmic violet · mint
+   ============================================================ */
+
+:root {
+  --ls-bg: #13102b; /* deep space indigo */
+  --ls-bg-2: #1b1640; /* lifted panel */
+  --ls-bg-3: #241d52; /* card hover / accent panel */
+  --ls-line: #342b63; /* hairline borders */
+  --ls-gold: #f4b23e; /* the star */
+  --ls-gold-2: #edb641;
+  --ls-violet: #8b5cf6; /* cosmic violet */
+  --ls-blue: #4f8df7; /* "other frameworks" blue */
+  --ls-mint: #3ce0a0; /* terminal mint */
+  --ls-orange: #f26b21; /* blazing fast */
+  --ls-text: #eceaf6;
+  --ls-muted: #a39fc4;
+  --ls-faint: #6b6593;
+  --ls-cream: #f7f1e3;
+
+  --slidev-theme-primary: #f4b23e;
+}
+
+/* ---- base ---- */
+.slidev-layout {
+  background: var(--ls-bg);
+  color: var(--ls-text);
+  font-feature-settings: 'cv02', 'cv03', 'cv04';
+  padding: 2.2rem 3rem;
+}
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3 {
+  color: var(--ls-text);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.slidev-layout h1 {
+  font-size: 2.45rem;
+  line-height: 1.08;
+}
+.slidev-layout a {
+  color: var(--ls-gold);
+}
+.slidev-layout strong {
+  color: var(--ls-text);
+}
+
+/* subtle starfield on every slide */
+.slidev-layout::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1px 1px at 12% 22%, rgba(255, 255, 255, 0.22), transparent),
+    radial-gradient(1px 1px at 78% 14%, rgba(255, 255, 255, 0.16), transparent),
+    radial-gradient(1px 1px at 64% 72%, rgba(255, 255, 255, 0.13), transparent),
+    radial-gradient(1px 1px at 32% 84%, rgba(255, 255, 255, 0.1), transparent),
+    radial-gradient(1.5px 1.5px at 88% 60%, rgba(244, 178, 62, 0.2), transparent);
+}
+.slidev-layout > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- helper text styles ---- */
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--ls-gold);
+  margin-bottom: 0.35rem;
+}
+.muted {
+  color: var(--ls-muted);
+}
+.faint {
+  color: var(--ls-faint);
+}
+.gold {
+  color: var(--ls-gold);
+}
+.violet {
+  color: var(--ls-violet);
+}
+.mint {
+  color: var(--ls-mint);
+}
+.lead {
+  color: var(--ls-muted);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+
+/* ---- cards ---- */
+.card {
+  background: var(--ls-bg-2);
+  border: 1px solid var(--ls-line);
+  border-radius: 14px;
+  padding: 1rem 1.2rem;
+  position: relative;
+  overflow: hidden;
+}
+.card.accent {
+  border-left: 4px solid var(--ls-gold);
+}
+.card .card-title {
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--ls-text);
+}
+.card .card-sub {
+  color: var(--ls-muted);
+  font-size: 0.95rem;
+  margin-top: 0.35rem;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* numbered rows */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  background: var(--ls-bg-2);
+  border: 1px solid var(--ls-line);
+  border-radius: 12px;
+  padding: 0.7rem 1.1rem;
+  margin-bottom: 0.55rem;
+}
+.row .num {
+  flex: none;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  background: var(--ls-gold);
+  color: #1a1330;
+}
+.row .num.ghost {
+  background: transparent;
+  color: var(--ls-gold);
+  font-size: 1.4rem;
+}
+.row .row-head {
+  font-weight: 700;
+  color: var(--ls-text);
+  min-width: 14rem;
+}
+.row .row-desc {
+  color: var(--ls-muted);
+  font-size: 0.95rem;
+}
+
+/* feature pills */
+.pill {
+  background: var(--ls-bg-2);
+  border: 1px solid var(--ls-line);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  min-height: 4.5rem;
+}
+
+/* code blocks: dark, on-brand frame */
+.slidev-layout .slidev-code-wrapper,
+.slidev-layout pre {
+  border: 1px solid var(--ls-line);
+  border-radius: 12px;
+}
+.slidev-layout pre {
+  background: #0e0b22 !important;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.slidev-code {
+  background: transparent !important;
+}
+
+/* small caption */
+.placeholder {
+  color: var(--ls-faint);
+  font-style: italic;
+  font-size: 0.78rem;
+}
+
+/* ---- cover ---- */
+.ls-cover {
+  background:
+    radial-gradient(120% 90% at 80% -10%, rgba(139, 92, 246, 0.28), transparent 60%),
+    radial-gradient(90% 80% at 0% 110%, rgba(244, 178, 62, 0.12), transparent 55%), var(--ls-bg) !important;
+}
+.ls-cover h1 {
+  font-size: 3.4rem;
+}
+
+/* ---- section divider ---- */
+.ls-section {
+  background:
+    radial-gradient(80% 80% at 12% 30%, rgba(139, 92, 246, 0.22), transparent 60%), var(--ls-bg) !important;
+}
+.ls-section .big-num {
+  font-size: 9rem;
+  font-weight: 900;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--ls-line);
+}
+
+/* ---- statement (gold) ---- */
+.ls-statement {
+  background: linear-gradient(135deg, #f4b23e 0%, #f0a12a 100%) !important;
+  color: #1a1330 !important;
+}
+.ls-statement::before {
+  display: none;
+}
+.ls-statement h1,
+.ls-statement h2 {
+  color: #1a1330;
+}
+.ls-statement .kicker {
+  color: #5c4708;
+}
+
+/* footer */
+.ls-footer {
+  position: absolute;
+  left: 3rem;
+  bottom: 1rem;
+  right: 3rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--ls-faint);
+  z-index: 2;
+}
+
+/* star bullets list */
+ul.stars {
+  list-style: none;
+  padding-left: 0;
+}
+ul.stars li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin: 0.55rem 0;
+  line-height: 1.4;
+}
+ul.stars li::before {
+  content: '★';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--ls-gold);
+  font-size: 0.9rem;
+}

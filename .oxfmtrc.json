@@ -1,0 +1,7 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "semi": false,
+  "singleQuote": true,
+  "proseWrap": "preserve",
+  "ignorePatterns": ["package-lock.json", "skills-lock.json", "slides.md", ".agents/**", "dist/**"]
+}
