@@ -1,12 +1,11 @@
 import { defineShikiSetup } from '@slidev/types'
 
-// Stellar Drift is always dark — pin a dark token theme for both color
-// schemes so code never renders with light-theme tokens on the dark panels.
+//https://github.com/shikijs/textmate-grammars-themes/tree/main/packages/tm-themes
 export default defineShikiSetup(() => {
   return {
     themes: {
-      dark: 'tokyo-night',
-      light: 'tokyo-night',
+      dark: 'github-dark',
+      light: 'github-dark',
     },
   }
 })

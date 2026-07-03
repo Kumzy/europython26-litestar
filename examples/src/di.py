@@ -1,39 +1,42 @@
+from dataclasses import dataclass
+
 from litestar import Litestar, get
-from litestar.di import Provide
+from litestar.di import NamedDependency, Provide
 
 
-async def get_session() -> dict[str, str]:
-    """Per-request resource — built fresh on every request."""
-    return {"scope": "request"}
+@dataclass
+class Engine:
+    """Expensive — built once per app."""
+
+    url: str
 
 
-_client = {"scope": "app"}
+@dataclass
+class Session:
+    """Cheap — built fresh per request."""
 
-
-async def get_client() -> dict[str, str]:
-    """Per-app resource — built once, then cached."""
-    return _client
+    engine: Engine
 
 
 # region scopes
-# scope == lifetime
-Provide(get_session)  # per request
-Provide(get_client, use_cache=True)  # per app
-
-# override anywhere in the layer tree:
-# app  >  router / controller  >  handler
-# endregion
+async def provide_engine() -> Engine:
+    return Engine(url="postgresql://db/orders")
 
 
-@get("/")
-async def index(session: dict[str, str], client: dict[str, str]) -> dict[str, str]:
-    return {"session": session["scope"], "client": client["scope"]}
+async def provide_session(engine: NamedDependency[Engine]) -> Session:
+    return Session(engine=engine)
+
+
+@get("/orders")
+async def list_orders(session: NamedDependency[Session]) -> dict[str, str]:
+    return {"db": session.engine.url}
 
 
 app = Litestar(
-    [index],
+    route_handlers=[list_orders],
     dependencies={
-        "session": Provide(get_session),
-        "client": Provide(get_client, use_cache=True),
+        "engine": Provide(provide_engine, use_cache=True),  # app: built once
+        "session": Provide(provide_session),  # request: fresh each time
     },
 )
+# endregion

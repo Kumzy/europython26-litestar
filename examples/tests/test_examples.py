@@ -41,9 +41,9 @@ async def test_controller_lists_orders() -> None:
 @pytest.mark.anyio
 async def test_di_scopes_resolve() -> None:
     async with AsyncTestClient(app=di.app) as client:
-        resp = await client.get("/")
+        resp = await client.get("/orders")
     assert resp.status_code == 200
-    assert resp.json() == {"session": "request", "client": "app"}
+    assert resp.json() == {"db": "postgresql://db/orders"}
 
 
 def test_blocking_apps_build() -> None:
