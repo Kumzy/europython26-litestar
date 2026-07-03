@@ -26,8 +26,8 @@ by Slidev). Supporting code lives outside the region.
 | -------------------- | ----- | -------------------- |
 | `src/hello.py`       | 3     | whole file           |
 | `src/orders.py`      | 4     | `requirements`       |
-| `src/controllers.py` | 11    | `controller`         |
-| `src/di.py`          | 12    | `scopes`             |
-| `src/blocking.py`    | 17    | `blocking` + `fixed` |
-| `src/dtos.py`        | 18    | `dto`                |
-| `src/batteries.py`   | 20    | `service`            |
+| `src/controllers.py` | 12    | `controller`         |
+| `src/di.py`          | 13    | `scopes`             |
+| `src/blocking.py`    | 18    | `blocking` + `fixed` |
+| `src/dtos.py`        | 19    | `dto`                |
+| `src/batteries.py`   | 21    | `service`            |

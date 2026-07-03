@@ -24,20 +24,23 @@ export config** — do not guess Slidev syntax from memory.
 
 ## Commands
 
+All workflows go through the `Makefile` (`make help` lists every target):
+
 ```bash
-npm install          # install deps
-npm run dev          # live preview at http://localhost:3030
-npm run build        # static site -> dist/  (the "does it still build?" check)
-npm run export-pdf   # PDF -> dist/slides.pdf  (needs playwright-chromium)
-npm run lint         # oxlint  (Vue <script> + TS)
-npm run fmt          # oxfmt   (Vue, TS, CSS, JSON, slide Markdown)
+make install     # install deps (npm + uv) and prek git hooks
+make dev         # live preview at http://localhost:3030
+make build       # static site -> dist/  (the "does it still build?" check)
+make export-pdf  # PDF -> dist/slides.pdf  (needs playwright-chromium)
+make lint        # oxlint + ruff + pyright
+make fix         # oxfmt + ruff format
+make test        # example tripwire tests (pytest)
+make prek        # run every git hook across the repo
 ```
 
-There is **no test / typecheck**, but **oxlint** + **oxfmt** now lint/format the
-deck, and **prek** (a fast `pre-commit` drop-in) runs them as git hooks — see
-`prek.toml`, `.oxlintrc.json`, `.oxfmtrc.json`, and the README. A clean
-`npm run build` is still the canonical verification gate. Slides are one file
-each in `slides/` (`1.md` … `22.md`), imported by `slides.md` via `src:`; theme
+**prek** (a fast `pre-commit` drop-in) runs the linters/formatters as git hooks —
+see `prek.toml`, `.oxlintrc.json`, `.oxfmtrc.json`, and the README. A clean
+`make build` is still the canonical verification gate. Slides are one file
+each in `slides/` (`1.md` … `23.md`), imported by `slides.md` via `src:`; theme
 in `styles/main.css`; diagrams in `components/*.vue`. The formatter intentionally
 ignores `slides.md` (the Slidev `src:` manifest) and `.agents/`.
 

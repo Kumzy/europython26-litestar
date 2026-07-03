@@ -9,7 +9,7 @@
 - **Slidev syntax is owned by the vendored skill.** Consult `.agents/skills/slidev/`
   (via the Skill tool) before writing slide frontmatter, layouts, animations, code
   blocks, or export config. Do not guess Slidev features from memory.
-- **Slides are one file each under `slides/` (`1.md` … `22.md`).** `slides.md` is
+- **Slides are one file each under `slides/` (`1.md` … `23.md`).** `slides.md` is
   just the entry: deck headmatter + a `src: ./slides/N.md` import per slide. Edit a
   slide by editing its `slides/N.md`; add/remove/reorder by editing the import list
   in `slides.md`. Per-slide frontmatter (layout/class) goes at the top of `slides/N.md`.
@@ -30,21 +30,21 @@
 
 ## Verification
 
-- The deck's verification gate is `npm run build` (clean build) plus a visual
-  check in `npm run dev`; `npm run lint` / `npm run fmt` cover Vue/TS/Markdown.
+- The deck's verification gate is `make build` (clean build) plus a visual
+  check in `make dev`; `make lint` / `make fix` cover linting and formatting.
 - Slide code snippets live in `examples/src/` and are tripwire-tested:
   `uv run pytest`, `uv run ruff check examples`, `uv run pyright`.
-- PDF export (`npm run export-pdf`) needs `playwright-chromium`.
+- PDF export (`make export-pdf`) needs `playwright-chromium`.
 
 ## Gotchas
 
 - Fonts are pinned (`Inter`, `JetBrains Mono`) in headmatter — don't swap ad hoc.
 - The former placeholder graphics are now Vue components: the "what we build
   vs. reality" stack (`StackThink`/`StackReality`, slide 2) and the
-  layered-config cascade (`LayerConfig`, slide 14). The one open placeholder is
-  the slide 22 QR (`public/qr.svg`), still pointing at the Discord — swap it for
+  layered-config cascade (`LayerConfig`, slide 15). The one open placeholder is
+  the slide 23 QR (`public/qr.svg`), still pointing at the Discord — swap it for
   the hosted deck URL before the talk.
-- Speaker split and bios are on slides 1 and 22 — keep attribution accurate.
+- Speaker split and bios are on slides 1 and 23 — keep attribution accurate.
 - `.beads/` is git-excluded (local-only); never force-add it.
 
 ## Skill Associations

@@ -8,21 +8,30 @@ builds and looks right*, not "tests pass."
 <!-- truth: start -->
 ## Essential Commands
 
+All workflows go through the `Makefile`; run `make help` to list every target.
+
 ### Daily Development
 ```bash
-npm install          # install dependencies (first run)
-npm run dev          # live preview at http://localhost:3030 (press `e` to edit a slide)
+make install         # install deps (npm + uv) and prek git hooks (first run)
+make dev             # live preview at http://localhost:3030 (press `e` to edit a slide)
 ```
 
 ### Build & Export (the "verify" step)
 ```bash
-npm run build        # static site -> dist/  (the canonical "does it still build?" check)
-npm run export       # export the deck (default format)
-npm run export-pdf   # PDF -> dist/slides.pdf  (needs playwright-chromium)
+make build           # static site -> dist/  (the canonical "does it still build?" check)
+make export-pdf      # PDF -> dist/slides.pdf  (needs playwright-chromium)
 ```
 
-There is **no lint/test/typecheck** in this repo. Treat a clean `npm run build`
-as the verification gate before committing content changes.
+### Lint, Format & Test
+```bash
+make lint            # oxlint + ruff + pyright
+make fix             # oxfmt + ruff format
+make test            # example tripwire tests (pytest)
+make prek            # run every git hook across the repo
+```
+
+Treat a clean `make build` as the verification gate before committing content
+changes.
 
 ## Guiding Principles
 
@@ -39,7 +48,7 @@ as the verification gate before committing content changes.
    (`.kicker`, `.lead`, `.gold`, `.muted`, cards, dividers) before adding new CSS.
 5. **Code on slides must be real and correct.** Snippets are Shiki-highlighted
    Python — keep them idiomatic Litestar and accurate.
-6. **Verify visually.** After meaningful changes, run `npm run build` (and the
+6. **Verify visually.** After meaningful changes, run `make build` (and the
    live preview) to confirm the deck still renders and exports.
 7. **Minimal targeted changes.** Make the smallest coherent edit that achieves the
    goal; don't opportunistically restyle unrelated slides.
@@ -85,7 +94,7 @@ Beads is the source of truth — never hand-edit `[x]`/`[~]`/`[!]`/`[-]` markers
 2. **Mark in progress** in Beads (don't edit `spec.md` directly).
 3. **Make the change** — edit the relevant `slides/N.md` (or `slides.md` to
    add/reorder slides), `styles/`, or `components/`.
-4. **Verify visually:** run `npm run dev` to eyeball it and `npm run build` to
+4. **Verify visually:** run `make dev` to eyeball it and `make build` to
    confirm it still compiles/exports. (This replaces the TDD red/green cycle —
    there are no unit tests for slides.)
 5. **Document stack deviations** in `tech-stack.md` *before* implementing them
@@ -128,7 +137,7 @@ git commit -m "docs(readme): Update export instructions"
 A content task is complete when:
 
 1. The change is implemented in `slides.md` / `styles/` / `components/`.
-2. `npm run build` succeeds (and the slide looks right in `npm run dev`).
+2. `make build` succeeds (and the slide looks right in `make dev`).
 3. Narrative still flows and the deck stays on-brand.
 4. Changes committed with a proper conventional-commit message.
 5. Task closed in Beads with the commit reference; `/flow:sync` run if policy requires.
