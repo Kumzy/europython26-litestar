@@ -15,6 +15,10 @@
   in `slides.md`. Per-slide frontmatter (layout/class) goes at the top of `slides/N.md`.
 - **Headmatter can carry `src:`** — that's why slide 1 lives in `slides/1.md` while
   deck config stays in `slides.md`. Verified against `@slidev/parser`.
+- **Standard slide skeleton:** kicker + `#` (h1) title spanning the full slide
+  width, one row. Column slides use `layout: two-cols-header` with the title in
+  the header and content under `::left::` / `::right::`. Centered statement
+  slides and the cover/close are the deliberate exceptions.
 - **Reuse theme classes** from `styles/main.css`: `.kicker` (eyebrow label),
   `.lead` (sub-headline), `.gold` (accent), `.muted` (secondary text), plus the
   card/divider treatments — before authoring new CSS.
