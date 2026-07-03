@@ -1,24 +1,23 @@
 <script setup lang="ts">
 // Slide 17: the event loop is one lane — a single blocking call parks
 // every request queued behind it.
-const done = ['req 1', 'req 2']
-const waiting = ['req 4', 'req 5', 'req 6']
+const done = ['req 2', 'req 1']
+const waiting = ['req 6', 'req 5', 'req 4']
 </script>
 
 <template>
   <div class="loop">
-    <div class="lane-label">the event loop — one lane, shared by every request</div>
     <div class="lane">
       <div class="flow" aria-hidden="true">→</div>
       <div v-for="req in waiting" :key="req" class="chip wait">{{ req }}</div>
       <div class="chip block">
-        <span class="mono">time.sleep(2)</span>
+        <span class="mono">pd.read_csv(…)</span>
         <span class="block-note">blocking</span>
       </div>
       <div v-for="req in done" :key="req" class="chip done">{{ req }} ✓</div>
       <div class="flow" aria-hidden="true">→</div>
     </div>
-    <div class="wait-note muted">…and everyone behind it waits the full 2&nbsp;s</div>
+    <div class="wait-note muted">…and everyone behind it waits until it finishes</div>
   </div>
 </template>
 
@@ -27,14 +26,6 @@ const waiting = ['req 4', 'req 5', 'req 6']
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-}
-.lane-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-weight: 800;
-  color: var(--ls-faint);
-  text-align: center;
 }
 .lane {
   display: flex;
