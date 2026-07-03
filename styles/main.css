@@ -265,22 +265,21 @@
   z-index: 2;
 }
 
-/* star bullets list */
+/* dash bullets list */
 ul.stars {
   list-style: none;
   padding-left: 0;
 }
 ul.stars li {
   position: relative;
-  padding-left: 1.6rem;
+  padding-left: 1.3rem;
   margin: 0.55rem 0;
   line-height: 1.4;
 }
 ul.stars li::before {
-  content: '★';
+  content: '–';
   position: absolute;
   left: 0;
   top: 0;
   color: var(--ls-gold);
-  font-size: 0.9rem;
 }
