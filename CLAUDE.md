@@ -37,7 +37,7 @@ There is **no test / typecheck**, but **oxlint** + **oxfmt** now lint/format the
 deck, and **prek** (a fast `pre-commit` drop-in) runs them as git hooks — see
 `prek.toml`, `.oxlintrc.json`, `.oxfmtrc.json`, and the README. A clean
 `npm run build` is still the canonical verification gate. Slides are one file
-each in `slides/` (`1.md` … `20.md`), imported by `slides.md` via `src:`; theme
+each in `slides/` (`1.md` … `22.md`), imported by `slides.md` via `src:`; theme
 in `styles/main.css`; diagrams in `components/*.vue`. The formatter intentionally
 ignores `slides.md` (the Slidev `src:` manifest) and `.agents/`.
 

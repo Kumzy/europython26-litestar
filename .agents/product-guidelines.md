@@ -26,6 +26,7 @@ Brand, tone, and visual guidelines for the deck. The bespoke theme lives in
   - `JourneyCurve.vue` — complexity-up / velocity-down chart.
   - `MiddlewareChain.vue` — request → handler pipeline.
   - `LayerConfig.vue` — app / router / controller / handler cascade.
+  - `EventLoop.vue` — one-lane event loop stalled by a blocking call.
   - `Star.vue` — the five-point star motif.
 
 ## Constraints
@@ -34,7 +35,9 @@ Brand, tone, and visual guidelines for the deck. The bespoke theme lives in
   `.gold`, `.muted`, card/divider styles) before introducing new ones.
 - **16:9 canvas**, readable from the back of a conference room: large type,
   high contrast, minimal text per slide.
-- Two `placeholder`-noted slides await custom graphics (the "vibe-coder stack"
-  image and the website layered-config diagram) — fill or remove before the talk.
-- Speaker attribution and bios are on slides 1 and 31 — keep them accurate.
+- The former placeholder graphics are now Vue components: the "what we build vs.
+  reality" stack (`StackThink`/`StackReality`, slide 2) and the layered-config
+  cascade (`LayerConfig`, slide 14). The one open placeholder is the slide 22 QR
+  (`public/qr.svg`), still the Discord link — swap for the hosted deck URL.
+- Speaker attribution and bios are on slides 1 and 22 — keep them accurate.
 - Exported artifacts (static site + PDF) must look identical to the live deck.

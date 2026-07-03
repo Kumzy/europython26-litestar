@@ -50,7 +50,7 @@ Hook config lives in `prek.toml`; tool config in `.oxlintrc.json` / `.oxfmtrc.js
 ## Structure
 
 - `slides.md` — deck entry: headmatter (deck config) + `src:` imports of `slides/*.md`.
-- `slides/` — one file per slide, `1.md` … `31.md`. Each holds that slide's
+- `slides/` — one file per slide, `1.md` … `22.md`. Each holds that slide's
   content and its own layout/class frontmatter.
 - `styles/main.css` — the Litestar "Stellar Drift" theme (palette, cards, dividers).
 - `components/` — Vue components for the diagrams:

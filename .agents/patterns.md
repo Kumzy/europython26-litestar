@@ -9,7 +9,7 @@
 - **Slidev syntax is owned by the vendored skill.** Consult `.agents/skills/slidev/`
   (via the Skill tool) before writing slide frontmatter, layouts, animations, code
   blocks, or export config. Do not guess Slidev features from memory.
-- **Slides are one file each under `slides/` (`1.md` … `20.md`).** `slides.md` is
+- **Slides are one file each under `slides/` (`1.md` … `22.md`).** `slides.md` is
   just the entry: deck headmatter + a `src: ./slides/N.md` import per slide. Edit a
   slide by editing its `slides/N.md`; add/remove/reorder by editing the import list
   in `slides.md`. Per-slide frontmatter (layout/class) goes at the top of `slides/N.md`.
@@ -19,22 +19,28 @@
   `.lead` (sub-headline), `.gold` (accent), `.muted` (secondary text), plus the
   card/divider treatments — before authoring new CSS.
 - **Diagrams are Vue components**, not images. Prefer `StackCompare`,
-  `JourneyCurve`, `MiddlewareChain`, `LayerConfig`, `Star` over static graphics.
+  `JourneyCurve`, `MiddlewareChain`, `LayerConfig`, `EventLoop`, `Star` over
+  static graphics.
 - **Code blocks are real Python**, Shiki-highlighted. Keep them idiomatic Litestar
   and accurate; use line-highlighting/transitions purposefully.
 
 ## Verification
 
-- There is **no test/lint/typecheck** suite. The verification gate is
-  `npm run build` (clean build) plus a visual check in `npm run dev`.
+- The deck's verification gate is `npm run build` (clean build) plus a visual
+  check in `npm run dev`; `npm run lint` / `npm run fmt` cover Vue/TS/Markdown.
+- Slide code snippets live in `examples/src/` and are tripwire-tested:
+  `uv run pytest`, `uv run ruff check examples`, `uv run pyright`.
 - PDF export (`npm run export-pdf`) needs `playwright-chromium`.
 
 ## Gotchas
 
 - Fonts are pinned (`Inter`, `JetBrains Mono`) in headmatter — don't swap ad hoc.
-- Two `placeholder`-noted slides still need custom graphics (the "vibe-coder
-  stack" image and the website layered-config diagram).
-- Speaker split and bios are on slides 1 and 31 — keep attribution accurate.
+- The former placeholder graphics are now Vue components: the "what we build
+  vs. reality" stack (`StackThink`/`StackReality`, slide 2) and the
+  layered-config cascade (`LayerConfig`, slide 14). The one open placeholder is
+  the slide 22 QR (`public/qr.svg`), still pointing at the Discord — swap it for
+  the hosted deck URL before the talk.
+- Speaker split and bios are on slides 1 and 22 — keep attribution accurate.
 - `.beads/` is git-excluded (local-only); never force-add it.
 
 ## Skill Associations
