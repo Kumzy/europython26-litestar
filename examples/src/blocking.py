@@ -11,7 +11,8 @@ from litestar import Litestar, get
 # region blocking
 @get("/report")
 async def report_blocking() -> dict[str, int]:
-    df = pd.read_csv("orders.csv")  # disk + CPU — blocks the loop
+    # disk + CPU — blocks the loop
+    df = pd.read_csv("orders.csv")
     return {"orders": len(df)}
     # endregion
 
@@ -19,7 +20,8 @@ async def report_blocking() -> dict[str, int]:
 # region fixed
 @get("/report", sync_to_thread=True)
 def report() -> dict[str, int]:
-    df = pd.read_csv("orders.csv")  # same work — in a worker thread
+    # same work — in a worker thread
+    df = pd.read_csv("orders.csv")
     return {"orders": len(df)}
     # endregion
 

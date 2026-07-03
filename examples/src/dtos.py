@@ -13,7 +13,7 @@ class Order(UUIDBase):
     total: Mapped[int]
     status: Mapped[str]
     cost_price: Mapped[int]  # internal
-    internal_notes: Mapped[str]  # internal
+    internal_notes: Mapped[str | None]  # internal
 
 
 class OrderOut(SQLAlchemyDTO[Order]):
