@@ -7,6 +7,7 @@ info: |
   https://ep2026.europython.eu/session/designing-performant-apis-with-litestar
 author: Cody Fincher & Julien Courtès
 highlighter: shiki
+colorSchema: dark
 lineNumbers: false
 drawings:
   persist: false
