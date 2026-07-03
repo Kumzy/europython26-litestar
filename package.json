@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "oxfmt": "^0.54.0",
-    "oxlint": "^1.69.0"
+    "oxlint": "^1.69.0",
+    "playwright-chromium": "^1.61.1"
   }
 }
