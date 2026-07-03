@@ -41,6 +41,10 @@ async def list_orders(
     user: User,  # from auth
     db: Session,  # injected
     page: int = 1,
+    page_size: int = 20,
+    search: str | None = None,
+    status: str | None = None,
+    sort: str = "created_at",
 ) -> list[OrderDTO]:
     ...
     # endregion

@@ -182,7 +182,6 @@
 }
 
 /* code blocks: dark, on-brand frame */
-.slidev-layout .slidev-code-wrapper,
 .slidev-layout pre {
   border: 1px solid var(--ls-line);
   border-radius: 12px;

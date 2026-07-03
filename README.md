@@ -46,12 +46,8 @@ tool config in `.oxlintrc.json` / `.oxfmtrc.json`.
 ## Structure
 
 - `slides.md` — deck entry: headmatter (deck config) + `src:` imports of `slides/*.md`.
-- `slides/` — one file per slide, `1.md` … `23.md`. Each holds that slide's
-  content and its own layout/class frontmatter.
-- `styles/main.css` — the Litestar "Stellar Drift" theme (palette, cards, dividers).
-- `components/` — Vue components for the diagrams:
-  - `StackCompare.vue` — the "what we think we build vs. production reality" hook.
-  - `JourneyCurve.vue` — complexity-up / velocity-down chart.
-  - `MiddlewareChain.vue` — request → handler pipeline.
-  - `LayerConfig.vue` — app / router / controller / handler cascade.
-  - `Star.vue` — the five-point star motif.
+- `slides/` — one file per slide (`1.md` … `23.md`), content + per-slide frontmatter.
+- `styles/` — the Litestar "Stellar Drift" theme.
+- `components/` — Vue components for the diagrams.
+- `examples/` — runnable Litestar snippets rendered into the slides.
+- `public/` — static assets (logo, memes, QR).
