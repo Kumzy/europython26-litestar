@@ -23,7 +23,6 @@ const reality = [
       <div v-for="item in reality" :key="item" class="brick">{{ item }}</div>
       <div class="brick gold">GET /orders → 200</div>
     </div>
-    <div class="col-foot">the same endpoint, in real life</div>
   </div>
 </template>
 
@@ -60,11 +59,5 @@ const reality = [
   color: #1a1330;
   font-weight: 800;
   font-family: var(--slidev-code-font-family, monospace);
-}
-.col-foot {
-  font-size: 0.78rem;
-  font-style: italic;
-  color: var(--ls-faint);
-  margin-top: 0.2rem;
 }
 </style>

@@ -9,7 +9,6 @@
     <div class="tower">
       <div class="brick gold">GET /orders → 200</div>
     </div>
-    <div class="col-foot">one handler, zero ceremony</div>
   </div>
 </template>
 
@@ -46,11 +45,5 @@
   color: #1a1330;
   font-weight: 800;
   font-family: var(--slidev-code-font-family, monospace);
-}
-.col-foot {
-  font-size: 0.78rem;
-  font-style: italic;
-  color: var(--ls-faint);
-  margin-top: 0.2rem;
 }
 </style>
