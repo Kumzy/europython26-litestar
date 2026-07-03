@@ -1,14 +1,13 @@
 [project]
-name = "litestar-deck-examples"
-version = "0.0.0"
-description = "Executably-verified Litestar snippets rendered into the EuroPython 2026 deck (sources under examples/)."
+name = "europython-2026-litestar"
+version = "0.0.1"
+description = "EuroPython 2026 deck for how to build performant APIs with Litestar."
 requires-python = ">=3.12"
-dependencies = ["litestar"]
+dependencies = ["advanced-alchemy>=1.11.0", "litestar"]
 
 [dependency-groups]
 dev = ["pytest>=8", "httpx>=0.27", "ruff>=0.6", "pyright>=1.1"]
 
-# Not an installable package — examples/src is exposed to tests via pytest pythonpath.
 [tool.uv]
 package = false
 

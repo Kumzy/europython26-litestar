@@ -22,9 +22,12 @@ Each `src/*.py` file is a complete program; `# region <name>` / `# endregion`
 markers select the exact slice shown on a slide (markers are stripped + dedented
 by Slidev). Supporting code lives outside the region.
 
-| File                 | Slide | Region         |
-| -------------------- | ----- | -------------- |
-| `src/hello.py`       | 3     | whole file     |
-| `src/orders.py`      | 4     | `requirements` |
-| `src/controllers.py` | 11    | `controller`   |
-| `src/di.py`          | 12    | `scopes`       |
+| File                 | Slide | Region               |
+| -------------------- | ----- | -------------------- |
+| `src/hello.py`       | 3     | whole file           |
+| `src/orders.py`      | 4     | `requirements`       |
+| `src/controllers.py` | 11    | `controller`         |
+| `src/di.py`          | 12    | `scopes`             |
+| `src/blocking.py`    | 17    | `blocking` + `fixed` |
+| `src/dtos.py`        | 18    | `dto`                |
+| `src/batteries.py`   | 20    | `service`            |

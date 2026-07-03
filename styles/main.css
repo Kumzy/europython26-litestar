@@ -196,6 +196,16 @@
   background: transparent !important;
 }
 
+/* inline code: on-brand chip, not the default light pill */
+.slidev-layout :not(pre) > code {
+  background: var(--ls-bg-3);
+  color: var(--ls-gold-2);
+  border: 1px solid var(--ls-line);
+  border-radius: 6px;
+  padding: 0.05em 0.35em;
+  font-size: 0.85em;
+}
+
 /* small caption */
 .placeholder {
   color: var(--ls-faint);

@@ -1,10 +1,15 @@
 """Tripwire tests: each slide's example must import + run against current Litestar."""
 
+import json
+
 import pytest
 from litestar.testing import AsyncTestClient
 
+import batteries
+import blocking
 import controllers
 import di
+import dtos
 import hello
 import orders
 
@@ -39,3 +44,25 @@ async def test_di_scopes_resolve() -> None:
         resp = await client.get("/")
     assert resp.status_code == 200
     assert resp.json() == {"session": "request", "client": "app"}
+
+
+def test_blocking_apps_build() -> None:
+    # No request (the handlers sleep for 2 s): registration is where Litestar
+    # validates handler signatures and sync_to_thread usage.
+    for app in (blocking.blocking_app, blocking.fixed_app):
+        assert app.openapi_schema.paths is not None
+        assert "/report" in app.openapi_schema.paths
+
+
+def test_dto_excludes_internal_fields() -> None:
+    # The declared shape is the contract: internal columns must not appear
+    # anywhere in the generated OpenAPI document.
+    document = json.dumps(dtos.app.openapi_schema.to_schema(), default=str)
+    assert "total" in document
+    assert "cost_price" not in document
+    assert "internal_notes" not in document
+
+
+def test_batteries_service_wires_repository() -> None:
+    assert batteries.OrderService.repository_type is batteries.OrderRepository
+    assert batteries.OrderRepository.model_type is dtos.Order
