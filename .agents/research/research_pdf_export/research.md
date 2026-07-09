@@ -156,6 +156,32 @@ Verified: `npm run lint` + `oxfmt` clean, `make build` clean, re-export = 601KB 
 used in CSS must also be imported in `styles/index.ts`, or Chromium will
 synthesize it and re-introduce Type 3 output.
 
+## Acrobat Glitch Fix (applied 2026-07-09)
+
+**Symptom (user):** Acrobat glitches, freezes briefly on page switches, and the
+background paints in visible stages. **Cause:** Chromium print converts every
+CSS gradient into a PDF tiling/shading pattern; the deck shipped **126 of
+them**, mostly full-page transparent fills — the "Stellar Drift" starfield
+(5 radial-gradients × every slide, `styles/main.css:51`), the cover glows
+(2 × pages 1/23), and `LayerFlow`'s animated `repeating-linear-gradient`
+dashes (5 full-canvas patterns on page 15). Acrobat composites stacked
+transparent patterns per paint, hence the staged background drawing and
+per-page freezes. Other viewers (Preview, Chrome) cope.
+
+**Fix (patterns: 126 → 2 tiny chip fills on page 2):**
+
+| Change | File | Mechanism |
+|--------|------|-----------|
+| Starfield → single inline SVG (5 `<circle>` dots) | `styles/main.css` `.slidev-layout::before` | SVG circles export as plain vector fills, no patterns; visually identical on screen |
+| Cover glows → pre-rendered `public/cover-glow.png` (45KB, 735×414), **export only** | `styles/main.css` `html.print .ls-cover` | Screen keeps the crisp CSS gradients |
+| LayerFlow dashes → real dashed borders, **export only** | `components/LayerFlow.vue` `html.print .vline/.hline` | Screen keeps the animated gradient dashes |
+| `html.print` hook | `setup/main.ts` | The CLI exporter emulates **screen** media (`export-*.mjs`: `emulateMedia({media:'screen'})`), so `@media print` never fires; the play route with `?print=` sets no class either. The setup mirrors the `/print` page, which adds `print` to `<html>` |
+
+**Rule for future styling:** avoid large-area CSS gradients (incl.
+`repeating-linear-gradient`) on things that reach the exported PDF; use inline
+SVG shapes, pre-rendered images, or `html.print` overrides. `.ls-section`
+still carries a gradient (currently unused) — convert it if it gets adopted.
+
 ## Artifact Lifecycle Fix (applied 2026-07-09)
 
 `slidev build` wipes `dist/`, which used to delete `dist/slides.pdf`. Fixed by

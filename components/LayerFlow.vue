@@ -143,6 +143,21 @@
   font-size: 0.6rem;
   line-height: 0.5;
 }
+/* in PDF export (html.print, set in setup/main.ts) swap the animated gradient
+   dashes for real dashed borders — each repeating-linear-gradient otherwise
+   becomes a full-canvas tiling pattern that Acrobat composites slowly */
+html.print .vline {
+  background: none;
+  width: 0;
+  border-left: 2px dashed var(--ls-faint);
+  animation: none;
+}
+html.print .hline {
+  background: none;
+  height: 0;
+  border-top: 2px dashed var(--ls-faint);
+  animation: none;
+}
 .split {
   position: relative;
   height: 16px;
