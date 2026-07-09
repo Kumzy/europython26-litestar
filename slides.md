@@ -17,6 +17,7 @@ class: ls-cover
 fonts:
   sans: Inter
   mono: JetBrains Mono
+  provider: none
 src: ./slides/1.md
 ---
 

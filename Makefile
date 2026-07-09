@@ -76,7 +76,7 @@ build:                                              ## Build the static deck -> 
 	@echo "${OK} Deck built to dist/"
 
 .PHONY: export-pdf
-export-pdf:                                         ## Export the deck to PDF -> dist/slides.pdf
+export-pdf: build                                   ## Export the deck to PDF -> dist/slides.pdf (builds first: `slidev build` wipes dist/)
 	@echo "${INFO} Exporting deck to PDF..."
 	@npm run export-pdf
 	@echo "${OK} PDF exported to dist/slides.pdf"

@@ -1,0 +1,21 @@
+{
+  "research_id": "research_pdf_export",
+  "topic": "Why the PDF export is not working correctly",
+  "type": "Bug Investigation",
+  "created_at": "2026-07-08T19:30:00+02:00",
+  "libraries_researched": ["@slidev/cli", "playwright-chromium", "poppler", "pikepdf", "pypdfium2", "@fontsource/inter", "@fontsource/jetbrains-mono"],
+  "files_analyzed": [
+    "Makefile",
+    "package.json",
+    "slides.md",
+    "slides/2.md",
+    "slides/5.md",
+    "slides/18.md",
+    "components/EventLoop.vue",
+    "styles/main.css",
+    "examples/src/blocking.py",
+    "dist/slides.pdf"
+  ],
+  "linked_prd": null,
+  "linked_flow": null
+}
