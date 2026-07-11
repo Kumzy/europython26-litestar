@@ -1,8 +1,8 @@
 <script setup lang="ts">
 // Slide 6 (right): complexity over time — click-revealed, in order:
-// X axis (label lands after the draw) → Y axis (same) → "by luck" (explodes)
-// → "vibe-coded 🤖" (explodes from day one) → "the dream" (flat fantasy)
-// → "by design" (kept low — the talk's promise, lands last).
+// X axis (label lands after the draw) → Y axis (same) → "custom glue"
+// (explodes) → "missing boundaries" (rises early) → "the dream" (flat
+// fantasy) → "by design" (kept low — the talk's promise, lands last).
 // Lines draw in left-to-right via stroke-dashoffset on their v-click reveal.
 </script>
 
@@ -11,7 +11,7 @@
     class="journey"
     viewBox="0 0 360 240"
     role="img"
-    aria-label="Complexity over time: exploding by luck, low by design, flat in the dream"
+    aria-label="Complexity over time: custom glue and missing boundaries grow quickly; explicit design keeps it lower"
   >
     <!-- 1. X axis: draws from the origin, "Time" label lands when it finishes -->
     <g v-click>
@@ -29,22 +29,22 @@
       </text>
     </g>
 
-    <!-- 3. by luck: complexity explodes -->
+    <!-- 3. custom glue everywhere: complexity explodes -->
     <g v-click>
       <path class="curve luck" d="M40 186 C 150 180, 250 140, 318 26" />
-      <text class="lbl luck-t" x="344" y="24" text-anchor="end">by luck 🔥</text>
+      <text class="lbl luck-t" x="344" y="24" text-anchor="end">custom glue everywhere</text>
     </g>
 
-    <!-- 4. vibe-coded by the manager: explodes from day one -->
+    <!-- 4. missing boundaries: rises from day one -->
     <g v-click>
-      <path class="curve vibe" d="M40 186 C 52 110, 62 42, 72 16" />
-      <text class="lbl vibe-t" x="82" y="24" text-anchor="start">vibe-coded 🤖</text>
+      <path class="curve boundaries" d="M40 186 C 68 142, 96 76, 132 38" />
+      <text class="lbl boundaries-t" x="142" y="40" text-anchor="start">missing boundaries</text>
     </g>
 
     <!-- 5. the dream: flat forever -->
     <g v-click>
       <path class="curve dream" d="M40 186 L 340 186" />
-      <text class="lbl dream-t" x="344" y="176" text-anchor="end">the dream ✨</text>
+      <text class="lbl dream-t" x="344" y="176" text-anchor="end">the dream</text>
     </g>
 
     <!-- 6. by design: kept as low as possible — the talk's promise, lands last -->
@@ -77,10 +77,10 @@
 .luck {
   stroke: var(--ls-orange);
 }
-.vibe {
+.boundaries {
   stroke: var(--ls-violet);
 }
-.vibe-t {
+.boundaries-t {
   fill: var(--ls-violet);
 }
 .design {
@@ -152,12 +152,12 @@ g.slidev-vclick-target .curve {
   transition: stroke-dashoffset 800ms ease;
 }
 g.slidev-vclick-target .luck,
-g.slidev-vclick-target .vibe,
+g.slidev-vclick-target .boundaries,
 g.slidev-vclick-target .design {
   stroke-dasharray: 700;
 }
 g.slidev-vclick-hidden .luck,
-g.slidev-vclick-hidden .vibe,
+g.slidev-vclick-hidden .boundaries,
 g.slidev-vclick-hidden .design {
   stroke-dashoffset: 700;
 }

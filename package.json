@@ -4,8 +4,9 @@
   "description": "Designing Performant APIs with Litestar — EuroPython 2026 (Slidev)",
   "type": "module",
   "scripts": {
-    "dev": "slidev --open",
+    "dev": "slidev --port 3031",
     "build": "slidev build",
+    "preview": "vite preview --host 0.0.0.0",
     "export": "slidev export",
     "export-pdf": "slidev export --format pdf --output dist/slides.pdf",
     "lint": "oxlint",
@@ -23,6 +24,7 @@
     "@fontsource/jetbrains-mono": "^5.2.8",
     "oxfmt": "^0.54.0",
     "oxlint": "^1.69.0",
-    "playwright-chromium": "^1.61.1"
+    "playwright-chromium": "^1.61.1",
+    "vite": "^8.0.16"
   }
 }

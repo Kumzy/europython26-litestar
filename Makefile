@@ -69,6 +69,10 @@ destroy: clean                                      ## Destroy the virtual envir
 dev:                                                ## Start Slidev dev server (http://localhost:3030)
 	@npm run dev
 
+.PHONY: preview
+preview: build                                      ## Preview the production build (http://localhost:4173)
+	@npm run preview
+
 .PHONY: build
 build:                                              ## Build the static deck -> dist/ (the "does it still build?" check)
 	@echo "${INFO} Building deck..."

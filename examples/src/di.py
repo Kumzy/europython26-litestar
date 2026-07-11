@@ -1,12 +1,15 @@
+from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
 from dataclasses import dataclass
 
 from litestar import Litestar, get
+from litestar.datastructures import State
 from litestar.di import NamedDependency, Provide
 
 
 @dataclass
 class Engine:
-    """Expensive — built once per app."""
+    """Application resource created during startup."""
 
     url: str
 
@@ -19,12 +22,14 @@ class Session:
 
 
 # region scopes
-async def provide_engine() -> Engine:
-    return Engine(url="postgresql://db/orders")
+@asynccontextmanager
+async def database_lifespan(app: Litestar) -> AsyncIterator[None]:
+    app.state.engine = Engine(url="postgresql://db/orders")
+    yield
 
 
-async def provide_session(engine: NamedDependency[Engine]) -> Session:
-    return Session(engine=engine)
+async def provide_session(state: State) -> Session:
+    return Session(engine=state.engine)
 
 
 @get("/orders")
@@ -34,9 +39,7 @@ async def list_orders(session: NamedDependency[Session]) -> dict[str, str]:
 
 app = Litestar(
     route_handlers=[list_orders],
-    dependencies={
-        "engine": Provide(provide_engine, use_cache=True),  # app: built once
-        "session": Provide(provide_session),  # request: fresh each time
-    },
+    lifespan=[database_lifespan],
+    dependencies={"session": Provide(provide_session, use_cache=True)},
 )
 # endregion

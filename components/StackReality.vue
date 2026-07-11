@@ -42,13 +42,13 @@ const reality = [
 .tower {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.18rem;
 }
 .brick {
   background: var(--ls-bg-2);
   border: 1px solid var(--ls-line);
   border-radius: 9px;
-  padding: 0.3rem 0.78rem;
+  padding: 0.23rem 0.78rem;
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--ls-text);
