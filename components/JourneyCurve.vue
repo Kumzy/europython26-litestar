@@ -35,10 +35,10 @@
       <text class="lbl luck-t" x="344" y="24" text-anchor="end">by luck 🔥</text>
     </g>
 
-    <!-- 4. vibe-coded by the manager: explodes from day one -->
+    <!-- 4. the manager's demo: explodes from day one -->
     <g v-click>
       <path class="curve vibe" d="M40 186 C 52 110, 62 42, 72 16" />
-      <text class="lbl vibe-t" x="82" y="24" text-anchor="start">vibe-coded 🤖</text>
+      <text class="lbl vibe-t" x="82" y="24" text-anchor="start">manager's demo 🤖</text>
     </g>
 
     <!-- 5. the dream: flat forever -->
