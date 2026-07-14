@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Slide 14: port of the layered-config flow built for the litestar v2 website
+// Slide 12: port of the layered-config flow built for the litestar v2 website
 // (litestar-vue-flow / LitestarWorkflow.vue), restyled for Stellar Drift.
 // Nested boxes: Application layer → Router/Controller layer → two Handler
 // layers, with config pills chained by animated dashed connectors.

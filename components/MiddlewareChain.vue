@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Slide 13: the request pipeline, in the order it actually runs.
+// Slide 14: the request pipeline, in the order it actually runs.
 const stages = [
   { label: 'Request', kind: 'io' },
   { label: 'Middleware', kind: 'mw' },

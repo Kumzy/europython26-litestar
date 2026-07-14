@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Slide 14: configuration set high in the tree, overridden where it matters.
+// Slide 12: configuration set high in the tree, overridden where it matters.
 // app → router / controller → handler, each layer narrowing the scope.
 // Router and controller sit at the same layer (same override precedence).
 const layers = [
