@@ -4,6 +4,10 @@
 
 Session: <https://ep2026.europython.eu/session/designing-performant-apis-with-litestar>
 
+Litestar: <https://litestar.dev>
+
+Discord: <https://discord.gg/litestar>
+
 ## Run
 
 ```bash
