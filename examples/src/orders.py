@@ -2,8 +2,9 @@ from dataclasses import dataclass
 
 from litestar import Litestar, get
 from litestar.connection import ASGIConnection
-from litestar.di import Provide
+from litestar.di import NamedDependency, Provide
 from litestar.handlers.base import BaseRouteHandler
+from litestar.params import FromQuery
 
 
 @dataclass
@@ -38,13 +39,13 @@ async def provide_session() -> Session:
 # region requirements
 @get("/orders", guards=[require_user])
 async def list_orders(
-    user: User,  # from auth
-    db: Session,  # injected
-    page: int = 1,
-    page_size: int = 20,
-    search: str | None = None,
-    status: str | None = None,
-    sort: str = "created_at",
+    user: NamedDependency[User],  # from auth
+    db: NamedDependency[Session],  # injected
+    page: FromQuery[int] = 1,
+    page_size: FromQuery[int] = 20,
+    search: FromQuery[str | None] = None,
+    status: FromQuery[str | None] = None,
+    sort: FromQuery[str] = "created_at",
 ) -> list[OrderDTO]:
     ...
     # endregion

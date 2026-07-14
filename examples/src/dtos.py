@@ -5,6 +5,7 @@ from uuid import UUID
 from advanced_alchemy.base import UUIDBase
 from advanced_alchemy.extensions.litestar import SQLAlchemyDTO, SQLAlchemyDTOConfig
 from litestar import Litestar, get
+from litestar.params import FromPath
 from sqlalchemy.orm import Mapped
 
 
@@ -23,7 +24,7 @@ class OrderOut(SQLAlchemyDTO[Order]):
 
 
 @get("/orders/{order_id:uuid}", return_dto=OrderOut)
-async def get_order(order_id: UUID) -> Order:
+async def get_order(order_id: FromPath[UUID]) -> Order:
     ...
     # endregion
 
