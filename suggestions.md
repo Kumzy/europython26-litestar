@@ -31,19 +31,22 @@ idiom remains anywhere), `make lint` clean, `make build` clean. Displayed
 snippet regions kept their line counts, so the click-highlight ranges on
 slides 15 and 19 still line up.
 
-## Recommended edits before tomorrow (smallest first)
+## Recommended edits — ALL APPLIED 2026-07-14
 
-1. **Slide 3 — visible typo** (`slides/3.md:6`): kicker reads
-   `happy developper` → `happy developer`.
-2. **Slide 4 — optional one word** (`slides/4.md`): `Session` → `AsyncSession`.
-   A sync session inside `async def` quietly contradicts slide 18's own
-   "one blocking call" lesson, and this is a maintainer audience.
-3. **Slide 9 — sharpen the DI line** (`slides/9.md:16`): replace
-   "Config & structure choices are limited; DI is global-ish" with
+Verified after applying: tripwire tests pass with deprecation warnings as
+errors, `make lint` clean, `make build` clean.
+
+1. ✅ **Slide 3 — visible typo** (`slides/3.md:6`): kicker now reads
+   `happy developer`.
+2. ✅ **Slide 4** (`slides/4.md`): `Session` → `AsyncSession` (a sync session
+   inside `async def` quietly contradicted slide 18's own "one blocking call"
+   lesson). `examples/src/orders.py` renamed to match, keeping the tripwire
+   twin in sync.
+3. ✅ **Slide 9 — sharpened the DI line** (`slides/9.md`): now reads
    **"No app-scoped DI — everything re-resolves per request."**
-   It is more accurate, harder to rebut, and it sets up slide 17
+   More accurate, harder to rebut, and it sets up slide 17
    (lifecycles) as the payoff.
-4. **Slide 13 — make the concern map match the slides that follow it**
+4. ✅ **Slide 13 — concern map now matches the slides that follow it**
    (`slides/13.md`, one array edit, still 5 rows / 5 clicks):
 
    | Concern                        | Litestar construct    | Delivered on |
@@ -54,13 +57,14 @@ slides 15 and 19 still line up.
    | Response shaping               | DTOs                  | slide 19     |
    | External integrations          | Plugins               | slide 21     |
 
-   Today the map lists Guards as its own row (no slide delivers it) and omits
-   DTOs — the marquee feature — entirely. This reorder turns the map into the
-   section's table of contents.
+   Previously the map listed Guards as its own row (no slide delivered it) and
+   omitted DTOs — the marquee feature — entirely. The reorder turns the map
+   into the section's table of contents.
 
-5. **Presenter notes** — only 5 of 23 slides have them. HTML-comment notes are
-   zero render risk; worth adding the handoff cues tonight (see "Speaker split
-   & handoff" below).
+5. ✅ **Handoff presenter notes** — scripted cue lines added as HTML comments
+   on slide 13 (Julien's handoff sentence after the last map row) and slide 14
+   (Cody's pickup line). If you choose close option B, add the matching cues
+   to slides 21/22 the same way. Fuller per-slide notes remain optional.
 
 ## Speaker split & handoff
 

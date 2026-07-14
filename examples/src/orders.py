@@ -19,7 +19,7 @@ class OrderDTO:
     total: int
 
 
-class Session:
+class AsyncSession:
     """Stand-in for an injected DB session."""
 
 
@@ -32,15 +32,15 @@ async def provide_user() -> User:
     return User(id=1, name="ada")
 
 
-async def provide_session() -> Session:
-    return Session()
+async def provide_session() -> AsyncSession:
+    return AsyncSession()
 
 
 # region requirements
 @get("/orders", guards=[require_user])
 async def list_orders(
     user: NamedDependency[User],  # from auth
-    db: NamedDependency[Session],  # injected
+    db: NamedDependency[AsyncSession],  # injected
     page: FromQuery[int] = 1,
     page_size: FromQuery[int] = 20,
     search: FromQuery[str | None] = None,
