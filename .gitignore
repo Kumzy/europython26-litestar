@@ -13,3 +13,11 @@ dmypy.json
 
 # playwright MCP browser artifacts
 .playwright-mcp/
+
+# AI/agent context — local-only, kept out of the repo
+.agents/
+.claude/
+CLAUDE.md
+skills-lock.json
+suggestions.md
+suggestions-2.md

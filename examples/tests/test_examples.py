@@ -41,9 +41,9 @@ async def test_controller_lists_orders() -> None:
 @pytest.mark.anyio
 async def test_di_scopes_resolve() -> None:
     async with AsyncTestClient(app=di.app) as client:
-        resp = await client.get("/orders")
+        resp = await client.get("/forecast")
     assert resp.status_code == 200
-    assert resp.json() == {"db": "postgresql://db/orders"}
+    assert resp.json() == {"upstream": "https://api.weather.example"}
 
 
 def test_blocking_apps_build() -> None:
