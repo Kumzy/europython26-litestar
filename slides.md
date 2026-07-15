@@ -112,3 +112,19 @@ src: ./slides/23.md
 ---
 src: ./slides/24.md
 ---
+
+---
+src: ./slides/25.md
+---
+
+---
+src: ./slides/26.md
+---
+
+---
+src: ./slides/27.md
+---
+
+---
+src: ./slides/28.md
+---
