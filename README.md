@@ -1,5 +1,7 @@
 # Designing Performant APIs with Litestar — EuroPython 2026
 
+**Live deck:** <https://kumzy.github.io/europython26-litestar/>
+
 [Slidev](https://sli.dev/) deck for the talk by Cody Fincher & Julien Courtès.
 
 Session: <https://ep2026.europython.eu/session/designing-performant-apis-with-litestar>
