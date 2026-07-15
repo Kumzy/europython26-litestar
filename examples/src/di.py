@@ -5,38 +5,38 @@ from litestar.di import NamedDependency, Provide
 
 
 @dataclass
-class Engine:
+class HttpClient:
     """Expensive — built once per app."""
 
-    url: str
+    base_url: str
 
 
 @dataclass
-class Session:
+class WeatherService:
     """Cheap — built fresh per request."""
 
-    engine: Engine
+    client: HttpClient
 
 
 # region scopes
-async def provide_engine() -> Engine:
-    return Engine(url="postgresql://db/orders")
+async def provide_client() -> HttpClient:
+    return HttpClient(base_url="https://api.weather.example")
 
 
-async def provide_session(engine: NamedDependency[Engine]) -> Session:
-    return Session(engine=engine)
+async def provide_weather(client: NamedDependency[HttpClient]) -> WeatherService:
+    return WeatherService(client=client)
 
 
-@get("/orders")
-async def list_orders(session: NamedDependency[Session]) -> dict[str, str]:
-    return {"db": session.engine.url}
+@get("/forecast")
+async def forecast(weather: NamedDependency[WeatherService]) -> dict[str, str]:
+    return {"upstream": weather.client.base_url}
 
 
 app = Litestar(
-    route_handlers=[list_orders],
+    route_handlers=[forecast],
     dependencies={
-        "engine": Provide(provide_engine, use_cache=True),  # app: built once
-        "session": Provide(provide_session),  # request: fresh each time
+        "client": Provide(provide_client, use_cache=True),  # app: built once
+        "weather": Provide(provide_weather),  # request: fresh each time
     },
 )
 # endregion

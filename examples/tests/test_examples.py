@@ -41,17 +41,17 @@ async def test_controller_lists_orders() -> None:
 @pytest.mark.anyio
 async def test_di_scopes_resolve() -> None:
     async with AsyncTestClient(app=di.app) as client:
-        resp = await client.get("/orders")
+        resp = await client.get("/forecast")
     assert resp.status_code == 200
-    assert resp.json() == {"db": "postgresql://db/orders"}
+    assert resp.json() == {"upstream": "https://api.weather.example"}
 
 
 def test_blocking_apps_build() -> None:
-    # No request (the handlers sleep for 2 s): registration is where Litestar
-    # validates handler signatures and sync_to_thread usage.
+    # No request (the handlers read a CSV that isn't there): registration is
+    # where Litestar validates handler signatures and sync_to_thread usage.
     for app in (blocking.blocking_app, blocking.fixed_app):
         assert app.openapi_schema.paths is not None
-        assert "/report" in app.openapi_schema.paths
+        assert "/reports/monthly" in app.openapi_schema.paths
 
 
 def test_dto_excludes_internal_fields() -> None:
