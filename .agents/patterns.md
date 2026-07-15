@@ -9,7 +9,7 @@
 - **Slidev syntax is owned by the vendored skill.** Consult `.agents/skills/slidev/`
   (via the Skill tool) before writing slide frontmatter, layouts, animations, code
   blocks, or export config. Do not guess Slidev features from memory.
-- **Slides are one file each under `slides/` (`1.md` … `23.md`).** `slides.md` is
+- **Slides are one file each under `slides/` (`1.md` … `24.md`).** `slides.md` is
   just the entry: deck headmatter + a `src: ./slides/N.md` import per slide. Edit a
   slide by editing its `slides/N.md`; add/remove/reorder by editing the import list
   in `slides.md`. Per-slide frontmatter (layout/class) goes at the top of `slides/N.md`.
@@ -41,10 +41,10 @@
 - Fonts are pinned (`Inter`, `JetBrains Mono`) in headmatter — don't swap ad hoc.
 - The former placeholder graphics are now Vue components: the "what we build
   vs. reality" stack (`StackThink`/`StackReality`, slide 2) and the
-  layered-config cascade (`LayerConfig`, slide 15). The one open placeholder is
-  the slide 23 QR (`public/qr.svg`), still pointing at the Discord — swap it for
-  the hosted deck URL before the talk.
-- Speaker split and bios are on slides 1 and 23 — keep attribution accurate.
+  layered-config cascade (`LayerConfig`, slide 15). The slide 24 QR
+  (`public/qr.svg`) now points at the deck repo; the segno one-liner to
+  regenerate it lives in a comment in `slides/24.md`.
+- Speaker split and bios are on slides 1 and 24 — keep attribution accurate.
 - `.beads/` is git-excluded (local-only); never force-add it.
 
 ## Skill Associations

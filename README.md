@@ -50,7 +50,7 @@ tool config in `.oxlintrc.json` / `.oxfmtrc.json`.
 ## Structure
 
 - `slides.md` — deck entry: headmatter (deck config) + `src:` imports of `slides/*.md`.
-- `slides/` — one file per slide (`1.md` … `23.md`), content + per-slide frontmatter.
+- `slides/` — one file per slide (`1.md` … `24.md`), content + per-slide frontmatter.
 - `styles/` — the Litestar "Stellar Drift" theme.
 - `components/` — Vue components for the diagrams.
 - `examples/` — runnable Litestar snippets rendered into the slides.

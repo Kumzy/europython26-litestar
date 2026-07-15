@@ -37,7 +37,7 @@ Brand, tone, and visual guidelines for the deck. The bespoke theme lives in
   high contrast, minimal text per slide.
 - The former placeholder graphics are now Vue components: the "what we build vs.
   reality" stack (`StackThink`/`StackReality`, slide 2) and the layered-config
-  cascade (`LayerConfig`, slide 14). The one open placeholder is the slide 22 QR
-  (`public/qr.svg`), still the Discord link — swap for the hosted deck URL.
-- Speaker attribution and bios are on slides 1 and 22 — keep them accurate.
+  cascade (`LayerConfig`, slide 15). The slide 24 QR (`public/qr.svg`) points at
+  the deck repo; the segno one-liner to regenerate it is in `slides/24.md`.
+- Speaker attribution and bios are on slides 1 and 24 — keep them accurate.
 - Exported artifacts (static site + PDF) must look identical to the live deck.

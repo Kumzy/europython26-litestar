@@ -21,7 +21,7 @@
 | Path | Purpose |
 |------|---------|
 | `slides.md` | Deck entry: headmatter (deck config) + `src:` imports of `slides/*.md`. |
-| `slides/` | One file per slide (`1.md` … `23.md`); content + per-slide frontmatter. |
+| `slides/` | One file per slide (`1.md` … `24.md`); content + per-slide frontmatter. |
 | `styles/main.css` | The "Stellar Drift" theme (palette, cards, dividers, motifs). |
 | `styles/index.ts` | Style entry registered by Slidev. |
 | `components/` | Vue diagram components (`StackCompare`, `JourneyCurve`, `MiddlewareChain`, `LayerConfig`, `Star`). |

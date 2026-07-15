@@ -10,3 +10,6 @@ __pycache__/
 .dmypy.json
 dmypy.json
 .mypy_cache/
+
+# playwright MCP browser artifacts
+.playwright-mcp/

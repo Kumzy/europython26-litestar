@@ -108,3 +108,7 @@ src: ./slides/22.md
 ---
 src: ./slides/23.md
 ---
+
+---
+src: ./slides/24.md
+---

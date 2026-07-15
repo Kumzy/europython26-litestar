@@ -63,41 +63,63 @@ errors, `make lint` clean, `make build` clean.
 
 5. ✅ **Handoff presenter notes** — scripted cue lines added as HTML comments
    on slide 13 (Julien's handoff sentence after the last map row) and slide 14
-   (Cody's pickup line). If you choose close option B, add the matching cues
-   to slides 21/22 the same way. Fuller per-slide notes remain optional.
+   (Cody's pickup line). Close option B chosen 2026-07-15; matching cues
+   added to slides 22/23 (post-renumbering). Fuller per-slide notes remain
+   optional. All cues rewritten 2026-07-15 in a plain, collegial voice — no
+   creator-vs-user framing (both speakers built and run Litestar).
 
-## Speaker split & handoff
+## Post-review changes — 2026-07-15 (beyond the original review)
+
+All verified: tripwire tests pass, `make lint` clean, `make build` clean,
+slides visually checked in the dev server.
+
+1. **Jacob Coffee funnel slide added** as `slides/22.md` — title, speaker,
+   Thu 16 July · 15:10 · Room S1 (verified against the EP2026 program). The
+   deck renumbered: old 22/23 became 23/24; `slides.md`, CLAUDE.md, README,
+   and `.agents/` docs all updated. The deck is now 24 slides.
+2. **Slide 21 Data card rewritten:** "Advanced Alchemy, SQLSpec, and Django -
+   first-party batteries, fully supported." AsyncPG/OracleDB dropped (SQLSpec
+   mostly supersedes both plugins).
+3. **Slide 18 (blocking call) rebuilt:** single magic-move code block (the
+   async→sync + `sync_to_thread=True` two-token diff morphs in place), the
+   EventLoop diagram gained a `fixed` state that unblocks when the code is
+   fixed, and a v-click capper puts the "startup warning, never a guess"
+   design point on-slide. Kicker is now "Sync or async - the correct pattern
+   exists." Tripwire twin (`examples/src/blocking.py`) and its test updated
+   to the `/reports/monthly` path.
 
 Cody's instinct — Julien opens, Cody covers the details in the second half —
 is the right one, and the deck already leans that way: slide 13 carries a
 "Julien · 1:10" note and slide 21 a "Cody · 1:00" note. Recommended plan,
 one primary handoff:
 
-| Slides                         | Voice     | Why this voice                                                                                                                                                                                                            |
-| ------------------------------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1–7 story                      | Julien    | The growing-API pain story is a _user's_ story — the CTO-running-Litestar-in-production voice makes it lived experience, not setup. Both intro on slide 1, then Julien takes the narrative.                               |
-| 8–10 landscape                 | Julien    | "You usually pick one… or the other" is the user's dilemma; it rings truer from the person who had to choose than from the person who built the third option.                                                             |
-| 11–13 philosophy               | Julien    | Slide 13's row-by-row concern map reveal ends as the table of contents for the second half — the perfect baton.                                                                                                           |
-| **Handoff**                    | 13 → 14   | Every row on the map is a design decision, and Cody made them — e.g. _"…and each of these rows is a design choice. Cody made most of them, so he gets to defend them."_ The pass is narratively motivated, not arbitrary. |
-| 14–20 building blocks + payoff | Cody      | Creator / design-intent voice ("we built it this way because…"); the blocking-call slide 18 also plays to the database background.                                                                                        |
-| 21 ecosystem                   | Cody      | Advanced Alchemy and SQLSpec are his projects; matches the existing note.                                                                                                                                                 |
-| 22–23 close                    | See below | Two options.                                                                                                                                                                                                              |
+| Slides                         | Voice         | Why this voice                                                                                                                                                                                                     |
+| ------------------------------ | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1–7 story                      | Julien        | The growing-API pain story is a _user's_ story — the CTO-running-Litestar-in-production voice makes it lived experience, not setup. Both intro on slide 1, then Julien takes the narrative.                        |
+| 8–10 landscape                 | Julien        | "You usually pick one… or the other" is the user's dilemma; it rings truer from the person who had to choose than from the person who built the third option.                                                      |
+| 11–13 philosophy               | Julien        | Slide 13's row-by-row concern map reveal ends as the table of contents for the second half — the perfect baton.                                                                                                    |
+| **Handoff**                    | 13 → 14       | Scripted cue (rewritten 2026-07-15, plain and collegial — both speakers built and run Litestar, so no creator-vs-user framing): _"Cody, why don't you walk us through these, starting with the request pipeline?"_ |
+| 14–20 building blocks + payoff | Cody          | Creator / design-intent voice ("we built it this way because…"); the blocking-call slide 18 also plays to the database background.                                                                                 |
+| 21–22 ecosystem + Jacob funnel | Cody          | Advanced Alchemy and SQLSpec are his projects; matches the existing note. Slide 22 (added 2026-07-15) funnels plugin depth to Jacob Coffee's Thursday talk.                                                        |
+| 23–24 close                    | Julien → Cody | Option B, chosen: Julien recaps the takeaways (23), Cody closes with "Litestar 3 is coming" (24).                                                                                                                  |
 
 **Close — two options:**
 
-- **A (simplest):** Cody straight through 22–23. One handoff all talk, lowest risk.
-- **B (recommended if you rehearse it once):** Julien delivers slide 22's three
-  takeaways as the production user's verdict — the claims land harder as
-  testimony than as self-assessment — then Cody closes 23 with "Litestar 3 is
-  coming," which belongs in the creator's voice. Slide 22 is three bullets;
-  the extra handoff is cheap.
+- **A (simplest):** Cody straight through the close. One handoff all talk, lowest risk.
+- **B (recommended if you rehearse it once):** Julien delivers the three
+  takeaways (now slide 23), then Cody closes 24 with "Litestar 3 is coming."
+  The takeaways slide is three bullets; the extra handoff is cheap.
+
+**Chosen 2026-07-15: option B.** Cue lines are in the presenter notes of
+slides 22 and 23 (post-renumbering; the Jacob slide carries the handoff).
 
 **Timing:** roughly 12 min Julien (1–13; the memes are seconds) and 13–14 min
-Cody (14–23, the denser half) — balanced for a 30-minute slot with Q&A.
+Cody (14–22 plus the 24 close, the denser half; Julien takes the slide-23
+recap) — balanced for a 30-minute slot with Q&A.
 
-**Mechanics:** write the actual handoff sentence into the presenter notes of
-slides 13 and 14 (and 21/22 if using option B). Fumbled passes are where
-two-speaker talks lose energy; a scripted cue line each costs nothing.
+**Mechanics:** all four cue lines are scripted in the presenter notes —
+slides 13/14 for the main handoff, 22/23 for the close. Fumbled passes are
+where two-speaker talks lose energy; a scripted cue line each costs nothing.
 
 ## Keep as-is (deliberate, validated choices)
 
@@ -114,7 +136,7 @@ two-speaker talks lose energy; a scripted cue line each costs nothing.
   async transactions. "Bring your own" and "you adopt the whole worldview"
   both hold as of July 2026.
 - **Slide count and arc.** Problem story (2–7) → landscape (8–10) → design
-  (11–19) → payoff (20) → ecosystem/close (21–23) matches the structure of the
+  (11–19) → payoff (20) → ecosystem/close (21–24) matches the structure of the
   framework talks that historically landed (capability first, incremental
   adoption, no rewrite demand).
 
@@ -186,21 +208,22 @@ staged there is either private or already moved to the org.
 **Applied:** slide 21's Work & integrate card now reads
 "Queues, MCP, Emails, **OAuth**, etc" (covers `litestar-httpx-oauth`).
 
-**Recommendation (one small edit, or none):** the slide's own presenter note
-says "map, not a feature checklist," and the cards end in "etc" — so strictly,
-nothing else is wrong. The one remaining name worth adding is
-**`litestar-django`** on the Data card: it's org-level, released, and "bring
-your Django models to Litestar" is a bridge-builder line for the Django
-contingent at a Python conference. Piccolo/aiosql stay under "etc".
+**Applied 2026-07-15:** the Data card now reads "**Advanced Alchemy**,
+**SQLSpec**, and **Django** - first-party batteries, fully supported." All
+three are bolded as fully supported; "bring your Django models to Litestar"
+(in the presenter note) is the bridge-builder line for the Django contingent.
+AsyncPG and OracleDB came off the card — SQLSpec mostly supersedes both
+plugins — and Piccolo/aiosql stay under the ecosystem's "etc".
 
 ## Logistics
 
 - **Jacob Coffee presents "Supercharging Litestar: Extensibility Through
-  Plugins" at EP2026 on Thursday July 16** — the day after you. On slide 21,
-  a verbal cross-reference ("for plugin depth, Jacob's talk Thursday") turns
-  overlap into a funnel.
-- **Slide 23 QR** still points at the Discord (known TODO in the file). If the
-  deck URL isn't hosted by tonight, the Discord is an acceptable fallback —
-  just say so when you gesture at it.
+  Plugins" at EP2026 on Thursday July 16** — the day after you. Now its own
+  slide (`slides/22.md`, between the ecosystem map and the recap; old 22/23
+  renumbered to 23/24): title, speaker, Thu 16 July · 15:10 · Room S1 — the
+  funnel made visible.
+- **Slide 23 QR** — resolved: it now points at the deck repo
+  (`github.com/Kumzy/europython26-litestar`); the segno one-liner to
+  regenerate it lives in a comment in `slides/24.md`.
 - The EP2026 program lists the session as **Beginner** level: the story arc on
   slides 3–7 earning its runtime is a feature — don't rush it.
