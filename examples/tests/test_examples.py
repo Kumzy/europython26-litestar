@@ -33,7 +33,9 @@ def test_orders_app_builds_and_documents_route() -> None:
 @pytest.mark.anyio
 async def test_controller_lists_orders() -> None:
     async with AsyncTestClient(app=controllers.app) as client:
-        resp = await client.get("/orders")
+        denied = await client.get("/orders")
+        resp = await client.get("/orders", headers={"x-api-key": "demo"})
+    assert denied.status_code == 401
     assert resp.status_code == 200
     assert resp.json() == [{"id": 1, "total": 42}]
 
