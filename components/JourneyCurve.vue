@@ -1,9 +1,9 @@
 <script setup lang="ts">
-// Slide 6 (right): complexity over time. Axes are static (visible on entry);
-// the curves land on the slide's three beats via explicit click indices:
-// click 1 "by luck" (with the cost list) → click 2 "manager's demo" (with the
-// inherited-demo punchline) → click 3 "the dream" + "by design" (the talk's
-// promise, lands last). Lines draw left-to-right via stroke-dashoffset.
+// Slide 6 (right): complexity over time — click-revealed, in order:
+// X axis (label lands after the draw) → Y axis (same) → "by luck" (explodes)
+// → "vibe-coded 🤖" (explodes from day one) → "the dream" (flat fantasy)
+// → "by design" (kept low — the talk's promise, lands last).
+// Lines draw in left-to-right via stroke-dashoffset on their v-click reveal.
 </script>
 
 <template>
@@ -13,14 +13,15 @@
     role="img"
     aria-label="Complexity over time: exploding by luck, low by design, flat in the dream"
   >
-    <!-- axes: static, visible on slide entry -->
-    <g>
+    <!-- 1. X axis: draws from the origin, "Time" label lands when it finishes -->
+    <g v-click>
       <line class="axis axis-x" x1="34" y1="196" x2="344" y2="196" />
       <path class="axis-head axis-head-x" d="M342 191 L 350 196 L 342 201 Z" />
       <text class="cap cap-x" x="190" y="224" text-anchor="middle">Time</text>
     </g>
 
-    <g>
+    <!-- 2. Y axis: grows upward, "Complexity" label lands when it finishes -->
+    <g v-click>
       <line class="axis axis-y" x1="34" y1="196" x2="34" y2="16" />
       <path class="axis-head axis-head-y" d="M29 18 L 34 10 L 39 18 Z" />
       <text class="cap cap-y" x="22" y="105" text-anchor="middle" transform="rotate(-90 22 105)">
@@ -28,26 +29,26 @@
       </text>
     </g>
 
-    <!-- beat 1. by luck: complexity explodes -->
-    <g v-click="1">
+    <!-- 3. by luck: complexity explodes -->
+    <g v-click>
       <path class="curve luck" d="M40 186 C 150 180, 250 140, 318 26" />
       <text class="lbl luck-t" x="344" y="24" text-anchor="end">by luck 🔥</text>
     </g>
 
-    <!-- beat 2. the manager's demo: explodes from day one -->
-    <g v-click="2">
+    <!-- 4. the manager's demo: explodes from day one -->
+    <g v-click>
       <path class="curve vibe" d="M40 186 C 52 110, 62 42, 72 16" />
       <text class="lbl vibe-t" x="82" y="24" text-anchor="start">manager's demo 🤖</text>
     </g>
 
-    <!-- beat 3. the dream: flat forever -->
-    <g v-click="3">
+    <!-- 5. the dream: flat forever -->
+    <g v-click>
       <path class="curve dream" d="M40 186 L 340 186" />
       <text class="lbl dream-t" x="344" y="176" text-anchor="end">the dream ✨</text>
     </g>
 
-    <!-- beat 3. by design: kept as low as possible — the talk's promise -->
-    <g v-click="3">
+    <!-- 6. by design: kept as low as possible — the talk's promise, lands last -->
+    <g v-click>
       <path class="curve design" d="M40 186 C 140 178, 240 168, 340 148" />
       <text class="lbl design-t" x="344" y="138" text-anchor="end">by design</text>
     </g>
