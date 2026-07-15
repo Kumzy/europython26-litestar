@@ -1,7 +1,9 @@
 <script setup lang="ts">
 // Slide 2 (right): everything production wires around that same endpoint.
 // Compact bricks so the full stack (10 concerns + the handler) fits on screen.
-// Pairs with <StackThink />; reveal this on click for the "until it isn't" beat.
+// Pairs with <StackThink />; fully manual reveal: one click for the column
+// header, one per concern brick, and a final one for the gold GET /orders
+// punchline (12 clicks total, driven by auto-incrementing v-click).
 const reality = [
   'Auth & guards',
   'Validation / DTOs',
@@ -18,10 +20,10 @@ const reality = [
 
 <template>
   <div class="col">
-    <div class="col-head">What production actually needs</div>
+    <div v-click class="col-head">What production actually needs</div>
     <div class="tower">
-      <div v-for="item in reality" :key="item" class="brick">{{ item }}</div>
-      <div class="brick gold">GET /orders → 200</div>
+      <div v-for="item in reality" :key="item" v-click class="brick">{{ item }}</div>
+      <div v-click class="brick gold">GET /orders → 200</div>
     </div>
   </div>
 </template>
